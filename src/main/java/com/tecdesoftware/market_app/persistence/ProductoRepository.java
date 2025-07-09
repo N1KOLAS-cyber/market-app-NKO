@@ -3,6 +3,7 @@ package com.tecdesoftware.market_app.persistence;
 import com.tecdesoftware.market_app.domain.Product;
 import com.tecdesoftware.market_app.domain.repository.ProductRepository;
 import com.tecdesoftware.market_app.persistence.crud.ProductoCrudRepository;
+import com.tecdesoftware.market_app.persistence.entity.Categoria;
 import com.tecdesoftware.market_app.persistence.entity.Producto;
 import com.tecdesoftware.market_app.persistence.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,10 @@ public class ProductoRepository implements ProductRepository {
     @Override
     public Product save(Product product) {
         Producto producto = productMapper.toProducto(product);
+        Categoria categoria = new Categoria();
+        categoria.setIdCategoria(product.getCategoryId());
+        producto.setCategoria(categoria);
+
         return productMapper.toProduct(productoCrudRepository.save(producto));
     }
 
@@ -61,7 +66,5 @@ public class ProductoRepository implements ProductRepository {
     public void delete(int productId) {
         productoCrudRepository.deleteById(productId);
     }
-
-
 
 }
