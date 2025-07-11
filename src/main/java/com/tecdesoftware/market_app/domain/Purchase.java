@@ -7,10 +7,11 @@ import java.util.List;
 public class Purchase {
     private int PurchaseId;
     private String clienteId;
+    private String PaymentMethod;
     private LocalDateTime date;
     private String comment;
     private String state;
-    private List<Purchase> item;
+    private List<Purchase> items;
 
     public int getPurchaseId() {
         return PurchaseId;
@@ -52,11 +53,19 @@ public class Purchase {
         this.state = state;
     }
 
-    public List<Purchase> getItem() {
-        return item;
+    public List<Purchase> getItems() {
+        return items;
     }
 
-    public void setItem(List<Purchase> item) {
-        this.item = item;
+    public void setItems(List<Purchase> items) {
+        this.items = items;
+    }
+
+    public String getPaymentMethod() {
+        return PaymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        PaymentMethod = paymentMethod;
     }
 }
