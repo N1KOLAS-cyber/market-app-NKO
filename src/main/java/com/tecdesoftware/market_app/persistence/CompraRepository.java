@@ -1,9 +1,10 @@
-package com.tecdesoftware.market_app.persistence.mapper;
+package com.tecdesoftware.market_app.persistence;
 
 import com.tecdesoftware.market_app.domain.Purchase;
 import com.tecdesoftware.market_app.domain.repository.PurchaseRepository;
 import com.tecdesoftware.market_app.persistence.crud.CompraCrudRepository;
 import com.tecdesoftware.market_app.persistence.entity.Compra;
+import com.tecdesoftware.market_app.persistence.mapper.PurchaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -36,6 +37,4 @@ public class CompraRepository implements PurchaseRepository {
         compra.getProductos().forEach(producto -> producto.setCompra(compra));
         return mapper.toPurchase(compraCrudRepository.save(compra));
     }
-
-
 }

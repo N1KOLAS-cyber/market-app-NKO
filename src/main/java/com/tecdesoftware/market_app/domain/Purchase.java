@@ -5,28 +5,28 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Purchase {
-    private int PurchaseId;
-    private String clienteId;
-    private String PaymentMethod;
+    private int purchaseId;
+    private String clientId;
     private LocalDateTime date;
+    private String paymentMethod;
     private String comment;
     private String state;
-    private List<Purchase> items;
+    private List<PurchaseItem> items;
 
     public int getPurchaseId() {
-        return PurchaseId;
+        return purchaseId;
     }
 
     public void setPurchaseId(int purchaseId) {
-        PurchaseId = purchaseId;
+        this.purchaseId = purchaseId;
     }
 
-    public String getClienteId() {
-        return clienteId;
+    public String getClientId() {
+        return clientId;
     }
 
-    public void setClienteId(String clienteId) {
-        this.clienteId = clienteId;
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 
     public LocalDateTime getDate() {
@@ -35,6 +35,14 @@ public class Purchase {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     public String getComment() {
@@ -53,19 +61,11 @@ public class Purchase {
         this.state = state;
     }
 
-    public List<Purchase> getItems() {
+    public List<PurchaseItem> getItems() {
         return items;
     }
 
-    public void setItems(List<Purchase> items) {
+    public void setItems(List<PurchaseItem> items) {
         this.items = items;
-    }
-
-    public String getPaymentMethod() {
-        return PaymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        PaymentMethod = paymentMethod;
     }
 }

@@ -1,5 +1,7 @@
 package com.tecdesoftware.market_app.persistence.mapper;
 
+import com.tecdesoftware.market_app.domain.PurchaseItem;
+import com.tecdesoftware.market_app.persistence.entity.Compra;
 import com.tecdesoftware.market_app.domain.Product;
 import com.tecdesoftware.market_app.persistence.entity.Producto;
 import org.mapstruct.InheritInverseConfiguration;

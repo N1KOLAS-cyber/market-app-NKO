@@ -2,6 +2,7 @@ package com.tecdesoftware.market_app.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -11,53 +12,54 @@ public class Compra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column(name = "compras")
+    @Column(name="id_compra")
+    //le cambié de int a integer TODO
     private Integer idCompra;
 
-    @Column(name = "id_cliente")
-    private int idCliente;
+    @Column(name="id_cliente")
+    private String idCliente;
 
-    public LocalDateTime fecha;
+    //LocalDateTime
+    private LocalDate fecha;
 
-    @Column(name = "medio_pago")
+    @Column(name="medio_pago")
     private String medioPago;
 
     private String comentario;
-    private Boolean estado;
 
-    //Relacion con cliente muchas comras para un cliente
+    private Boolean estado;
+    // Relación con cliente: muchas compras para un cliente
     @ManyToOne
-    //insertable es para que no haya modificaciones
-    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    //insertable y updateble en false es para que no haya modificaciones
+    @JoinColumn(name="id_cliente", insertable=false, updatable=false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL})
-    private List<CompraProducto> compraProductos;
+    //una compra tiene muchos productos
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
+    private List<CompraProducto> productos;
 
 
-
-    public Integer getIdCompra() {
+    public int getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(Integer idCompra) {
+    public void setIdCompra(int idCompra) {
         this.idCompra = idCompra;
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
-    public LocalDateTime getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -85,19 +87,19 @@ public class Compra {
         this.estado = estado;
     }
 
-    public List<CompraProducto> getCompraProductos() {
-        return compraProductos;
-    }
-
-    public void setCompraProductos(List<CompraProducto> compraProductos) {
-        this.compraProductos = compraProductos;
-    }
-
     public Cliente getCliente() {
         return cliente;
     }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<CompraProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<CompraProducto> productos) {
+        this.productos = productos;
     }
 }
